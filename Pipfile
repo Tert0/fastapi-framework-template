@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+fastapi-framework = "*"
+uvicorn = "*"
+python-dotenv = "*"
+asyncpg = "*"
+
+
+[dev-packages]
+flake8 = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.9"

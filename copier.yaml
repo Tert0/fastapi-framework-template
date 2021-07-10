@@ -1,0 +1,17 @@
+project_name:
+    type: str
+jwt_secret_key:
+  type: str
+  secret: true
+db_host:
+  type: str
+db_port:
+  type: int
+  default: 5432
+db_database:
+  type: str
+db_username:
+  type: str
+db_password:
+  type: str
+  secret: true
