@@ -34,7 +34,4 @@ async def set_username(username: str, data=Depends(get_data), db: DB = Depends(d
         raise HTTPException(400, "Username doesn't match Regex")
     user.username = username
     await db.commit()
-    return {
-        "id": user.id,
-        "username": user.username
-    }
+    return {"id": user.id, "username": user.username}
