@@ -15,4 +15,4 @@ db_username:
 db_password:
   type: str
   secret: true
-_answers_file: .copier-answers.yml
+answers_file: .copier-answers.yml
