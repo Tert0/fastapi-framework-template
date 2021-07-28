@@ -1,6 +1,5 @@
 from typing import Dict
 
-from aioredis import Redis
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi_framework import (
     redis_dependency,
@@ -10,6 +9,7 @@ from fastapi_framework import (
     check_refresh_token,
     invalidate_refresh_token,
     get_data,
+    Redis,
 )
 from fastapi_framework.database import select, DB
 import re
@@ -64,7 +64,7 @@ async def refresh_route(
             raise e
     user: User = await db.first(select(User).filter_by(id=int(data["id"])))
     if not user:
-        raise HTTPException(500, "Unexepted Error")
+        raise HTTPException(500, "Unexpected Error")
     await invalidate_refresh_token(refresh_token, redis)
     return await generate_tokens({"user": {"id": user.id, "username": user.username}}, int(user.id), redis)
 
