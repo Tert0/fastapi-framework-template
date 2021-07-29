@@ -5,6 +5,7 @@ jwt_secret_key:
   secret: true
 db_host:
   type: str
+  default: db
 db_port:
   type: int
   default: 5432
@@ -12,10 +13,11 @@ db_database:
   type: str
 db_username:
   type: str
+  default: postgres
 db_password:
   type: str
   secret: true
 redis_host:
   type: str
-  default: localhost
+  default: redis
 _answers_file: .copier-answers.yml
