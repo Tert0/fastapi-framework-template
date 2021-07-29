@@ -13,7 +13,7 @@ from fastapi_framework import (
 )
 from fastapi_framework.database import select, DB
 import re
-from ..models.user import User
+from app.models.user import User
 
 router = APIRouter(prefix="/authentication")
 
