@@ -7,9 +7,9 @@ services:
   db:
     image: postgres:alpine
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=template
-      - POSTGRES_PASSWORD=Secret
+      - POSTGRES_USER=[[ db_username ]]
+      - POSTGRES_DB=[[ db_database ]]
+      - POSTGRES_PASSWORD=[[ db_password ]]
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
