@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=[[ db_database ]]
       - POSTGRES_PASSWORD=[[ db_password ]]
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -U [[ db_username ]]" ]
       interval: 5s
       timeout: 5s
       retries: 5
