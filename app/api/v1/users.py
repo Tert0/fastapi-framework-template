@@ -6,7 +6,7 @@ from fastapi_framework.database import DB, select
 
 from app.models.user import User
 
-router = APIRouter(prefix="/user")
+router = APIRouter(prefix="/user", tags=["user"])
 
 RE_USERNAME = re.compile(r"^[A-Za-z0-9\_\-\.äöüÄÖÜ]{3,50}$")
 

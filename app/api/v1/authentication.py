@@ -15,7 +15,7 @@ from fastapi_framework.database import select, DB
 import re
 from app.models.user import User
 
-router = APIRouter(prefix="/authentication")
+router = APIRouter(prefix="/authentication", tags=["auth"])
 
 RE_USERNAME = re.compile(r"^[A-Za-z0-9\_\-\.äöüÄÖÜ]{3,50}$")
 
