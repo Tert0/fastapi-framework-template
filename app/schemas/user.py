@@ -14,5 +14,5 @@ class CreateUser(BaseModel):
 
 
 class UpdateUser(BaseModel):
-    username: str
+    username: Optional[str]
     password: Optional[str]
