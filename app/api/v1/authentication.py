@@ -64,7 +64,7 @@ async def refresh_route(
         if e.detail == "Token is expired":
             await invalidate_refresh_token(refresh_token, redis)
             raise e
-    user: User = await db.first(select(User).filter_by(id=int(data["id"])))
+    user: User = await db.first(select(User).filter_by(id=int(data["user_id"])))
     if not user:
         raise HTTPException(500, "Unexpected Error")
     await invalidate_refresh_token(refresh_token, redis)
