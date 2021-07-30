@@ -11,9 +11,11 @@ from fastapi_framework import (
     get_data,
     Redis,
 )
+from app.schemas.authentication import Tokens
 from fastapi_framework.database import select, DB
 import re
 from app.models.user import User
+from app.schemas.user import UserSchema
 
 router = APIRouter(prefix="/authentication", tags=["auth"])
 
@@ -26,7 +28,7 @@ async def on_startup():
     await database_dependency.init()
 
 
-@router.post("/token")
+@router.post("/token", response_model=Tokens)
 async def token_route(
     username: str, password: str, redis: Redis = Depends(redis_dependency), db: DB = Depends(database_dependency)
 ):
@@ -38,7 +40,7 @@ async def token_route(
     return await generate_tokens({"user": {"id": user.id, "username": user.username}}, int(user.id), redis)
 
 
-@router.post("/register")
+@router.post("/register", response_model=UserSchema)
 async def register_route(username: str, password: str, db: DB = Depends(database_dependency)):
     if await db.exists(select(User).filter_by(username=username)):
         raise HTTPException(409, "Username already exists")
@@ -46,10 +48,10 @@ async def register_route(username: str, password: str, db: DB = Depends(database
         raise HTTPException(400, "Username doesn't match Regex")
     user: User = await User.create(username, pwd_context.hash(password), db)
     await db.commit()
-    return {"id": user.id, "username": user.username}
+    return UserSchema(**{"id": user.id, "username": user.username})
 
 
-@router.post("/refresh")
+@router.post("/refresh", response_model=Tokens)
 async def refresh_route(
     refresh_token: str, redis: Redis = Depends(redis_dependency), db: DB = Depends(database_dependency)
 ):
