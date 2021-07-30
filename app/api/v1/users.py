@@ -11,17 +11,17 @@ router = APIRouter(prefix="/user", tags=["user"])
 RE_USERNAME = re.compile(r"^[A-Za-z0-9\_\-\.äöüÄÖÜ]{3,50}$")
 
 
-@router.get("/get")
+@router.get("/")
 async def get_user(data=Depends(get_data)):
     return data.get("user")
 
 
-@router.get("/username/get")
+@router.get("/username")
 async def get_username(data=Depends(get_data)):
     return data.get("user").get("username")
 
 
-@router.post("/username/set")
+@router.post("/username")
 async def set_username(username: str, data=Depends(get_data), db: DB = Depends(database_dependency)):
     if data["user"]["username"] == username:
         raise HTTPException(400, "Nothing Changed")
