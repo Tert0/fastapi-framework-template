@@ -16,4 +16,6 @@ COPY start.sh .
 
 COPY app/ ./app
 
+COPY config.yaml .
+
 CMD chmod +x start.sh && ./start.sh
