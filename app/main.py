@@ -1,6 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import api_v1_router
+from fastapi_framework import Config, ConfigField
+
+
+class FastApiConfig(Config):
+    CONFIG_PATH = "config.yaml"
+    CONFIG_TYPE = "yaml"
+
+    name: str = ConfigField("FastAPI Project")
+    version: str = ConfigField("0.1.0")
+
 
 app = FastAPI()
 
