@@ -4,7 +4,7 @@ from app.api import api_v1_router
 from fastapi_framework import Config, ConfigField
 
 
-class FastApiConfig(Config):
+class FastAPIConfig(Config):
     CONFIG_PATH = "config.yaml"
     CONFIG_TYPE = "yaml"
 
@@ -12,7 +12,7 @@ class FastApiConfig(Config):
     version: str = ConfigField("0.1.0")
 
 
-app = FastAPI()
+app = FastAPI(title=FastAPIConfig.name, version=FastAPIConfig.version)
 
 app.add_middleware(
     CORSMiddleware,
