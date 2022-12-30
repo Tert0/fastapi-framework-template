@@ -10,7 +10,7 @@ uvicorn = "0.14.0"
 python-dotenv = "0.18.0"
 sqlalchemy = "1.4.22"
 asyncpg = "0.27.0"
-pydantic = "1.10.2"
+pydantic = "1.10.3"
 
 
 [dev-packages]
