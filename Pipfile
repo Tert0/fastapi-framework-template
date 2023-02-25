@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "0.66.0"
-fastapi-framework = "1.4.8"
-uvicorn = "0.14.0"
-python-dotenv = "0.18.0"
-sqlalchemy = "1.4.22"
+fastapi = "0.92.0"
+fastapi-framework = "1.5.3.3"
+uvicorn = "0.20.0"
+python-dotenv = "1.0.0"
+sqlalchemy = "2.0.4"
 asyncpg = "0.27.0"
 pydantic = "1.10.5"
 
