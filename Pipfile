@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 fastapi = "0.92.0"
 fastapi-framework = "1.5.3.3"
-uvicorn = "0.22.0"
+uvicorn = "0.23.0"
 python-dotenv = "1.0.0"
 sqlalchemy = "2.0.4"
 asyncpg = "0.28.0"
